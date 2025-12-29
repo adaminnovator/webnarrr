@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GTFS Example Feed Documentation</title>
     <style>
-        /* 全局科技感基础样式 */
+        /* 全局基础样式 - 简洁主题 */
         :root {
             --primary-blue: #165DFF;
-            --dark-bg: #0a192f;
-            --light-bg: #112240;
-            --text-primary: #e6f1ff;
-            --text-secondary: #8892b0;
-            --border-color: #233554;
-            --glow-color: rgba(22, 93, 255, 0.3);
+            --light-blue: #e8f4fd;
+            --dark-text: #333647;
+            --light-text: #64748b;
+            --border-color: #e2e8f0;
+            --glow-color: rgba(22, 93, 255, 0.2);
+            --card-bg: #ffffff;
+            --body-bg: #f8fafc;
             --transition: all 0.3s ease;
         }
 
@@ -26,21 +27,17 @@
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.7;
-            max-width: 1200px;
+            max-width: 1400px; /* 加宽布局提升阅读体验 */
             margin: 0 auto;
-            padding: 2rem;
-            background-color: var(--dark-bg);
-            color: var(--text-primary);
-            background-image: 
-                radial-gradient(circle at 10% 20%, var(--light-bg) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, var(--light-bg) 0%, transparent 20%);
-            min-height: 100vh;
+            padding: 2rem 1.5rem; /* 响应式内边距 */
+            background-color: var(--body-bg);
+            color: var(--dark-text);
         }
 
-        /* 标题样式 - 科技感渐变+发光 */
+        /* 标题样式 - 保留视觉效果，适配浅色背景 */
         h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(90deg, var(--primary-blue), #64ffda);
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, var(--primary-blue), #3b82f6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -55,26 +52,26 @@
             position: absolute;
             bottom: -2px;
             left: 0;
-            width: 100px;
+            width: 80px;
             height: 2px;
             background: var(--primary-blue);
-            box-shadow: 0 0 10px var(--glow-color);
+            box-shadow: 0 0 8px var(--glow-color);
         }
 
         h2 {
-            font-size: 1.8rem;
-            color: #64ffda;
+            font-size: 1.6rem;
+            color: var(--primary-blue);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
-            margin: 2rem 0 1rem;
+            margin: 2.5rem 0 1.2rem;
         }
 
         h3 {
-            font-size: 1.3rem;
-            color: var(--primary-blue);
-            margin: 1.5rem 0 1rem;
+            font-size: 1.25rem;
+            color: #1e293b;
+            margin: 1.8rem 0 1rem;
             position: relative;
-            padding-left: 1rem;
+            padding-left: 0.8rem;
         }
 
         h3::before {
@@ -83,16 +80,17 @@
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            width: 4px;
-            height: 1.2rem;
+            width: 3px;
+            height: 1rem;
             background: var(--primary-blue);
-            box-shadow: 0 0 8px var(--glow-color);
+            box-shadow: 0 0 6px var(--glow-color);
         }
 
         /* 段落和链接样式 */
         p {
-            color: var(--text-secondary);
+            color: var(--light-text);
             margin-bottom: 1rem;
+            line-height: 1.8;
         }
 
         a {
@@ -111,61 +109,61 @@
             height: 1px;
             background: var(--primary-blue);
             transition: var(--transition);
-            box-shadow: 0 0 5px var(--glow-color);
+            box-shadow: 0 0 4px var(--glow-color);
         }
 
         a:hover {
-            color: #64ffda;
+            color: #0f48d0;
         }
 
         a:hover::after {
             width: 100%;
         }
 
-        /* 表格样式 - 科技感边框+hover效果 */
+        /* 表格样式 - 简洁优化 */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1rem 0 1.5rem;
-            background-color: var(--light-bg);
+            margin: 1.2rem 0 1.8rem;
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         th {
-            background-color: #172a45;
-            color: #64ffda;
-            padding: 1rem;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 0.8rem 1rem;
             text-align: left;
             font-weight: 600;
             border-bottom: 1px solid var(--border-color);
         }
 
         td {
-            padding: 1rem;
-            color: var(--text-secondary);
+            padding: 0.8rem 1rem;
+            color: var(--light-text);
             border-bottom: 1px solid var(--border-color);
             transition: var(--transition);
         }
 
         tr:hover td {
-            background-color: #1a3055;
-            color: var(--text-primary);
+            background-color: #f1f5f9;
+            color: #1e293b;
         }
 
-        /* 代码块容器 - 带复制按钮 */
+        /* 代码块容器 - 优化布局 */
         .code-container {
             position: relative;
-            margin: 1rem 0 1rem;
-            border-radius: 8px;
+            margin: 1.2rem 0 1rem;
+            border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(22, 93, 255, 0.15);
+            box-shadow: 0 2px 10px rgba(22, 93, 255, 0.08);
             border: 1px solid var(--border-color);
         }
 
-        /* 复制按钮样式 - 科技感悬浮按钮 */
+        /* 复制按钮样式 - 保留视觉效果 */
         .copy-btn {
             position: absolute;
             top: 0.5rem;
@@ -182,68 +180,70 @@
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            box-shadow: 0 0 8px var(--glow-color);
+            box-shadow: 0 0 6px var(--glow-color);
         }
 
         .copy-btn:hover {
             background-color: #0f48d0;
-            box-shadow: 0 0 12px var(--glow-color);
+            box-shadow: 0 0 10px var(--glow-color);
             transform: translateY(-2px);
         }
 
         .copy-btn.copied {
             background-color: #00c853;
-            box-shadow: 0 0 8px rgba(0, 200, 83, 0.4);
+            box-shadow: 0 0 6px rgba(0, 200, 83, 0.3);
         }
 
-        /* 代码块样式 - 终端风格 */
+        /* 代码块样式 - 简洁终端风 */
         pre {
-            background-color: #0d1b2a;
-            padding: 1.5rem 1rem 1rem;
-            border-radius: 8px;
+            background-color: #f8fafc;
+            padding: 1.2rem 1rem 1rem;
+            border-radius: 6px;
             overflow-x: auto;
-            color: #a8b9cc;
+            color: #334155;
             font-family: 'Consolas', 'Monaco', monospace;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         code {
             font-family: inherit;
         }
 
-        /* 列表样式 */
+        /* 列表样式优化 */
         ul, ol {
             margin: 1rem 0 1rem 2rem;
-            color: var(--text-secondary);
+            color: var(--light-text);
+            line-height: 1.8;
         }
 
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         /* 来源备注样式 */
         .source-note {
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            color: var(--light-text);
             margin: 0 0 2rem 0;
             padding-left: 0.5rem;
             border-left: 2px solid var(--border-color);
         }
 
-        /* 关键提示框样式 */
+        /* 关键提示框样式 - 简洁优化 */
         .note {
-            background-color: var(--light-bg);
-            padding: 1.5rem;
-            border-left: 4px solid var(--primary-blue);
+            background-color: var(--card-bg);
+            padding: 1.2rem 1.5rem;
+            border-left: 3px solid var(--primary-blue);
             margin: 2rem 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .note h2 {
             border: none;
             padding: 0;
             margin: 0 0 1rem 0;
+            font-size: 1.4rem;
         }
 
         /* 底部信息样式 */
@@ -251,29 +251,58 @@
             margin-top: 3rem;
             padding-top: 1rem;
             border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
+            color: var(--light-text);
             font-size: 0.9rem;
         }
 
-        /* 滚动条美化 - 科技感 */
+        /* 滚动条美化 - 简洁版 */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--light-bg);
+            background: #f1f5f9;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb {
             background: var(--primary-blue);
             border-radius: 4px;
-            box-shadow: 0 0 5px var(--glow-color);
+            opacity: 0.7;
         }
 
         ::-webkit-scrollbar-thumb:hover {
             background: #0f48d0;
+        }
+
+        /* 响应式布局优化 */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 1rem;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            table, td, th {
+                padding: 0.6rem 0.8rem;
+            }
+
+            pre {
+                padding: 1rem 0.8rem 0.8rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -323,7 +352,6 @@
         </tbody>
     </table>
     <p><strong>Sample Data</strong>:</p>
-    <!-- 代码容器 + 复制按钮 -->
     <div class="code-container">
         <button class="copy-btn" data-target="agency-data">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
